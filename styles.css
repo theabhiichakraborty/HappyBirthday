@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Dark background */
+    color: #fff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.text-container {
+    position: absolute;
+    top: 10%;
+    width: 60vw;
+    text-align: center;
+    font-size: 3rem;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 1;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.icon-container {
+    
+    position: absolute;
+    display: none; /* Hidden initially */
+    text-align: center;
+    animation: moveUpDown 2s infinite;
+}
+@keyframes moveUpDown
+{
+    0% { top: 35%; }
+    50% { top: 40%; } /* Adjust the distance of the movement */
+    100% { top: 35%; }
+}
+
+#lightBulb {
+    width: 300px; /* Size of the light bulb */
+    height: 300px
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
