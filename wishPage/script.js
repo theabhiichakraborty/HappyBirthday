@@ -9,7 +9,7 @@ let particleArray = [];
 const mouse = {
     x: null,
     y: null,
-    radius: 150
+    radius: 70
 }
 
 window.addEventListener('mousemove', function (event) {
@@ -18,17 +18,16 @@ window.addEventListener('mousemove', function (event) {
 })
 
 ctx.fillStyle = 'white';
-ctx.font = '30px Verdana';
-ctx.fillText('A', 0, 30);
-// ctx.strokeStyle='white';
-// ctx.strokeRect(0,0,100,100);
-const textCoordinates = ctx.getImageData(0, 0, 100, 100);
-// console.log(textCoordinates);
+ctx.font = '25px Verdana';
+ctx.fillText('HAPPY', 0, 30);
+ctx.fillText('BIRTHDAY', 0, 60);
+const textCoordinates = ctx.getImageData(0, 0, 10000, 10000);
+
 class Particle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 3;
+        this.size = 2.5;
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = (Math.random() * 100) + 20;
@@ -57,6 +56,7 @@ class Particle {
             this.x -= Xdirection;
             this.y -= Ydirection;
         }
+        //To retreat the particles back to original postion
         else {
             if (this.x != this.baseX) {
                 this.x -= (this.x - this.baseX) / 5;
@@ -74,7 +74,7 @@ function init() {
             if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
                 let positionX = x;
                 let positionY = y;
-                particleArray.push(new Particle(positionX * 10, positionY * 10));
+                particleArray.push(new Particle(positionX * 7, positionY * 7));
             }
         }
     }
