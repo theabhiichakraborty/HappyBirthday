@@ -18,9 +18,9 @@ window.addEventListener('mousemove', function (event) {
 })
 
 ctx.fillStyle = 'white';
-ctx.font = '25px Verdana';
-ctx.fillText('HAPPY', 0, 30);
-ctx.fillText('BIRTHDAY', 0, 60);
+ctx.font = '35px Verdana';
+ctx.fillText('HAPPY', 45, 50);
+ctx.fillText('BIRTHDAY', 30, 80);
 const textCoordinates = ctx.getImageData(0, 0, 10000, 10000);
 
 class Particle {
@@ -71,7 +71,7 @@ function init() {
     particleArray = [];
     for (let y = 0, y2 = textCoordinates.height; y < y2; y++){
         for (let x = 0, x2 = textCoordinates.width; x < x2; x++) {
-            if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128) {
+            if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 150) {
                 let positionX = x;
                 let positionY = y;
                 particleArray.push(new Particle(positionX * 7, positionY * 7));
@@ -85,8 +85,38 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].draw();
-        particleArray[i].update()
+        particleArray[i].update();
     }
+    connect();
     requestAnimationFrame(animate);
 }
 animate();
+
+function connect(){
+    for(let a=0;a<particleArray.length;a++)
+        for(let b=a;b<particleArray.length;b++){
+            let dx=particleArray[a].x-particleArray[b].x;
+            let dy=particleArray[a].y-particleArray[b].y;
+            let distance=Math.sqrt(dx*dx + dy*dy);
+
+            if (distance<15){
+                ctx.strokeStyle='white';
+                ctx.lineWidth=2;
+                ctx.beginPath();
+                ctx.moveTo(particleArray[a].x,particleArray[a].y);
+                ctx.lineTo(particleArray[b].x,particleArray[b].y)
+                ctx.stroke();
+            }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audio1');
+    // Unmute and play after the page loads
+    audio.muted = false;
+    audio.play().then(() => {
+        console.log('Audio is playing');
+    }).catch(error => {
+        console.error('Playback failed:', error);
+    });
+})
