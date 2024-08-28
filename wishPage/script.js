@@ -18,10 +18,10 @@ window.addEventListener('mousemove', function (event) {
 })
 
 ctx.fillStyle = 'white';
-ctx.font = '35px Verdana';
-ctx.fillText('HAPPY', 45, 50);
+ctx.font = '30px Verdana';
+ctx.fillText('HAPPY', 58, 50);
 ctx.fillText('BIRTHDAY', 30, 80);
-const textCoordinates = ctx.getImageData(0, 0, 10000, 10000);
+const textCoordinates = ctx.getImageData(0, 0, 1000, 1000);
 
 class Particle {
     constructor(x, y) {
