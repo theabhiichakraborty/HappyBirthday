@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', cursive;
+}
+
+.container {
+    text-align: center;
+    color: white;
+}
+
+.message {
+    font-size: 2rem;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
