@@ -21,7 +21,7 @@ ctx.fillStyle = 'white';
 ctx.font = '30px Verdana';
 ctx.fillText('HAPPY', 58, 50);
 ctx.fillText('BIRTHDAY', 30, 80);
-const textCoordinates = ctx.getImageData(0, 0, 1000, 1000);
+const textCoordinates = ctx.getImageData(0, 0, 1000, 700);
 
 class Particle {
     constructor(x, y) {
